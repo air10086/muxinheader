@@ -15,13 +15,16 @@ const devConfig = {
         test: /.css$/,
         exclude: '/.min.css$/',
         loader: ['style-loader', 'css-loader?modules'],
+        exclude: /node_modules/,
       },
+
       {
         test: /\.min\.css$/,
         loader: ['style-loader', 'css-loader'],
       },
     ],
   },
+
   devServer: {
     contentBase: path.join(__dirname, '../example/src/'),
     compress: true,
