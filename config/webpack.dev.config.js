@@ -13,14 +13,8 @@ const devConfig = {
     rules: [
       {
         test: /.css$/,
-        exclude: '/.min.css$/',
+        exclude: /.min.css$/,
         loader: ['style-loader', 'css-loader?modules'],
-        exclude: /node_modules/,
-      },
-
-      {
-        test: /\.min\.css$/,
-        loader: ['style-loader', 'css-loader'],
       },
     ],
   },

@@ -1,10 +1,11 @@
 {
-  "name": "muxinHeader",
-  "version": "1.0.0",
+  "name": "muxin-header",
+  "version": "1.0.5",
   "description": "",
-  "main": "dist/main.js",
+  "main": "lib/index.js",
+  "private": false,
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.config.js",
@@ -12,8 +13,11 @@
     "build": "webpack --config config/webpack.prod.config.js",
     "pub": "npm run build && npm publish"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "muxin",
+    "header"
+  ],
+  "author": "whan",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.10.3",

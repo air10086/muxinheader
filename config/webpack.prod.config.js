@@ -1,4 +1,4 @@
-const path = 'path'
+const path = require('path')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 用于将组件的css打包成单独的文件输出到`lib`目录中
@@ -7,7 +7,7 @@ const prodConfig = {
   mode: 'production',
   entry: path.join(__dirname, '../src/index.js'),
   output: {
-    path: path.join(__dirname, '../lib/'),
+    path: path.join(__dirname, '../lib'),
     filename: 'index.js',
     libraryTarget: 'umd',
     libraryExport: 'default',
@@ -36,7 +36,7 @@ const prodConfig = {
     'react-dom': {
       root: 'ReactDOM',
       commonjs2: 'react-dom',
-      commjs: 'react-dom',
+      commonjs: 'react-dom',
       amd: 'react-dom',
     },
   },

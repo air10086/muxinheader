@@ -14,31 +14,21 @@ module.exports = {
           ],
         },
       },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-            },
-          },
-        ],
-      },
+
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              name: '[name].[ext]',
+              attrs: [':data-src'],
+              name: 'images/[name].[ext]',
               limit: 10000,
-              outputPath: 'images/',
             },
           },
         ],
       },
+
       {
         test: /\.(htm|html)$/i,
         use: ['html-withimg-loader'],

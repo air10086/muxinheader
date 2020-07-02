@@ -7,7 +7,7 @@ html body {
   width: 100%;
   box-sizing: border-box;
 }
-.wrapper {
+.UXTJH12jSj_K8ky_sa8YU {
   background: rgba(41, 50, 65, 1);
   padding: 0 20px;
   height: 50px;
@@ -20,32 +20,32 @@ html body {
   align-items: center;
   min-width: 900px;
 }
-.pic-con {
+._1xUdZNRZi1JJxhFKjkVfXE {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.pic-img {
+.VNtUxzg_Ye_abuDlUnX4x {
   line-height: 50px;
   margin-right: 32px;
 }
-.drop-nav {
+.R4AepyMWA1yqlopBwpQV2 {
   line-height: 50px;
   cursor: pointer;
   display: inline-block;
   height: 50px;
 }
-.dropdown-con {
+._3IEQP6rZykegzcCdr5tmYV {
   height: 100%;
   width: 100vw;
   box-sizing: border-box;
 }
-.drop-top {
+._3FKSHRed3HzSUJG3wOTFWj {
   display: block;
   height: 400px;
   width: 100%;
 }
-.drop-mask {
+.W9bxT8N629CRxOPcwnZo6 {
   display: block;
   height: calc(100vh - 469px);
   width: 100%;
@@ -55,14 +55,14 @@ html body {
     rgba(255, 255, 255, 0.6)
   );
 }
-.nav-right {
+._3GDdXzjsFWnJY-JtWqsxPk {
   height: 100%;
   justify-content: space-around;
   align-items: center;
   display: flex;
   flex-flow: row nowrap;
 }
-.avator-nav {
+._3RpEed74KKrSxZ8bfs5lst {
   margin-left: 30px;
   line-height: 50px;
   height: 50px;
@@ -70,40 +70,41 @@ html body {
   justify-content: center;
   align-items: center;
 }
-.avator-nav > img {
+._3RpEed74KKrSxZ8bfs5lst > img {
   margin-right: 7px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
 }
-.pic-note {
+._1IK6Tu1biEJCiPAbZm0OrE {
   width: 16px;
   height: 16px;
   display: block;
 }
-.bg-choose {
+.F6DyiZ718j3E0IjezI52a {
   background-color: rgba(41, 50, 65, 1);
 }
-.bg-choose:link {
+.F6DyiZ718j3E0IjezI52a:link {
   background-color: rgba(41, 50, 65, 1);
 }
-.bg-choose:hover {
+.F6DyiZ718j3E0IjezI52a:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
-.bg-choose:active {
+.F6DyiZ718j3E0IjezI52a:active {
   background-color: rgba(0, 0, 0, 0.2);
 }
-.bg-choose:visited {
+.F6DyiZ718j3E0IjezI52a:visited {
   background-color: rgba(0, 0, 0, 0.2);
 }
-.nav-right > div {
+._3GDdXzjsFWnJY-JtWqsxPk > div {
   height: 100%;
   padding: 15px;
   cursor: pointer;
   margin-left: 30px;
 }
 
-.padding-none {
+._2a567PhJrVuo-RPKcwc2qy {
   display: flex;
   padding: 0 !important;
 }
+
