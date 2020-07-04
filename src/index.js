@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as styles from './index.css'
+import cookie from 'js-cookie'
 import noted from './images/noted.png'
 import myHeader from './images/header.png'
 import defaultAvator from './images/default_avator.png'
@@ -18,14 +19,18 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
       </Menu.Item>
     </Menu>
   )
+  const loginOut = e => {
+    const next_url = window.location.href
+    const access_token = cookie.get('access_token')
+    if (e.key === '1') {
+      if (access_token) cookie.remove('access_token')
+      window.location.href = `http://192.168.2.135/dashboard-admin/login?next_url=${next_url}`
+    }
+  }
 
   const avatorMenu = (
-    <Menu>
-      <Menu.Item>
-        <a traget="self" href="http://192.168.2.135/dashboard-admin/login">
-          退出
-        </a>
-      </Menu.Item>
+    <Menu onClick={loginOut}>
+      <Menu.Item key="1">退出</Menu.Item>
     </Menu>
   )
 
