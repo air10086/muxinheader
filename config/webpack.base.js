@@ -4,7 +4,7 @@ module.exports = {
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'babel-loader?chaheDirectory',
         options: {
           plugins: [
             [
@@ -39,7 +39,7 @@ module.exports = {
           {
             loader: 'style-loader',
           },
-          { loader: 'css-loader' },
+          { loader: 'css-loader?modules' },
           {
             loader: 'less-loader',
             options: {

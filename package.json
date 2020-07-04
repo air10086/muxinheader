@@ -1,6 +1,6 @@
 {
   "name": "muxin-header",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "lib/index.js",
   "private": false,
@@ -11,7 +11,8 @@
     "start": "webpack-dev-server --config config/webpack.dev.config.js",
     "dev": "webpack-dev-server --config config/webpack.dev.config.js",
     "build": "webpack --config config/webpack.prod.config.js",
-    "pub": "npm run build && npm publish"
+    "pub": "npm run build && npm publish",
+    "analyze": "webpack --config config/webpack.prod.config.js --profile --json > stats.json"
   },
   "keywords": [
     "muxin",
@@ -35,10 +36,12 @@
     "less": "^3.11.3",
     "less-loader": "5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.6",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
