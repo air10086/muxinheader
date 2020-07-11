@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as styles from './index.css'
+import axios from 'axios'
 import cookie from 'js-cookie'
 import noted from './images/noted.png'
 import myHeader from './images/header.png'
@@ -22,9 +23,25 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
   const loginOut = e => {
     const next_url = window.location.href
     const access_token = cookie.get('access_token')
-    if (e.key === '1') {
-      if (access_token) cookie.remove('access_token')
-      window.location.href = `http://192.168.2.135/dashboard-admin/login?next_url=${next_url}`
+    if (e.key === '1' && access_token !== void 0) {
+      cookie.remove('access_token')
+      axios({
+        method: 'post',
+        // url: 'http://192.168.2.186:1036/sys/logout',
+        url: 'http://192.168.2.135:1036/sys/logout',
+        data: {
+          access_token: access_token,
+        },
+      })
+        .then(res => {
+          if (res.code === 200) {
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
+      window.location.href = `http://192.168.2.135/dashboard-admin/login?returnUrl=${next_url}`
     }
   }
 
@@ -45,7 +62,9 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles['pic-con']}>
-        <img className={styles['pic-img']} src={myHeader} />
+        <a target="self" href="http://192.168.2.135/dashboard-admin/home">
+          <img className={styles['pic-img']} src={myHeader} />
+        </a>
         <Dropdown overlay={menu}>
           <span
             className={styles['drop-nav']}

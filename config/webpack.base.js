@@ -39,13 +39,17 @@ module.exports = {
           {
             loader: 'style-loader',
           },
-          { loader: 'css-loader?modules' },
+          {
+            loader: 'css-loader',
+          },
           {
             loader: 'less-loader',
             options: {
               sourceMap: true,
+
               modifyVars: {
                 '@primary-color': '#FF6F00',
+                'link-color': '#0066CC',
               },
               javascriptEnabled: true,
             },
