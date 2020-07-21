@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import * as styles from './index.css'
 import axios from 'axios'
 import cookie from 'js-cookie'
@@ -8,7 +8,33 @@ import defaultAvator from './images/default_avator.png'
 import { Menu, Dropdown } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
 
-const MuxinHeader = ({ avator = defaultAvator }) => {
+const base = 'https://api.uwooz.com/sso-manage'
+const hostUrl = 'https://console.cloud.uwooz.com/dashboardadmin'
+const MuxinHeader = () => {
+  const [avator, setAvator] = useState(defaultAvator)
+
+  useEffect(() => {
+    const access_token = cookie.get('access_token')
+    const next_url = window.location.href
+    axios({
+      method: 'get',
+      url: `${base}/sys/baseInfo`,
+      params: {
+        access_token,
+      },
+    })
+      .then(res => {
+        if (res.data.code === 200) {
+          setAvator(res.data.data.headPortrait)
+        }
+        if (res.data.code === 401) {
+          window.location.href = `${hostUrl}/login?returnUrl=${next_url}`
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
   const menu = (
     <Menu className={styles['dropdown-con']}>
       <Menu.Item className={styles['drop-top']}>
@@ -27,21 +53,14 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
       cookie.remove('access_token')
       axios({
         method: 'post',
-        // url: 'http://192.168.2.186:1036/sys/logout',
-        url: 'http://192.168.2.135:1036/sys/logout',
+        url: `${base}/sys/logout`,
         data: {
           access_token: access_token,
         },
+      }).catch(error => {
+        console.log(error)
       })
-        .then(res => {
-          if (res.code === 200) {
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
-
-      window.location.href = `http://192.168.2.135/dashboard-admin/login?returnUrl=${next_url}`
+      window.location.href = `${hostUrl}/login?returnUrl=${next_url}`
     }
   }
 
@@ -62,7 +81,7 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles['pic-con']}>
-        <a target="self" href="http://192.168.2.135/dashboard-admin/home">
+        <a target="self" href={`${hostUrl}/home`}>
           <img className={styles['pic-img']} src={myHeader} />
         </a>
         <Dropdown overlay={menu}>
@@ -89,8 +108,7 @@ const MuxinHeader = ({ avator = defaultAvator }) => {
             className={styles['avator-nav']}
             onClick={e => e.preventDefault()}
           >
-            <img src={avator ? avator : defaultAvator} alt="" />{' '}
-            <DownOutlined />
+            <img src={avator} alt="" /> <DownOutlined />
           </span>
         </Dropdown>
       </div>
