@@ -7,10 +7,15 @@ import myHeader from './images/header.png'
 import defaultAvator from './images/default_avator.png'
 import { Menu, Dropdown } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
-
-const base = 'https://api.uwooz.com/sso-manage'
-const hostUrl = 'https://console.cloud.uwooz.com/dashboardadmin'
-const MuxinHeader = () => {
+/**
+ *
+ * @param {*} baseURL 接口请求地址 默认是正式环境地址
+ * @param {*} hostURL 退出跳转地址 默认是正式环境地址
+ */
+const MuxinHeader = ({
+  baseURL = 'https://api.uwooz.com/sso-manage',
+  hostURL = 'https://console.cloud.uwooz.com/dashboardadmin',
+}) => {
   const [avator, setAvator] = useState(defaultAvator)
 
   useEffect(() => {
@@ -18,7 +23,7 @@ const MuxinHeader = () => {
     const next_url = window.location.href
     axios({
       method: 'get',
-      url: `${base}/sys/baseInfo`,
+      url: `${baseURL}/sys/baseInfo`,
       params: {
         access_token,
       },
@@ -26,9 +31,6 @@ const MuxinHeader = () => {
       .then(res => {
         if (res.data.code === 200) {
           setAvator(res.data.data.headPortrait)
-        }
-        if (res.data.code === 401) {
-          window.location.href = `${hostUrl}/login?returnUrl=${next_url}`
         }
       })
       .catch(error => {
@@ -53,15 +55,15 @@ const MuxinHeader = () => {
       cookie.remove('access_token')
       axios({
         method: 'post',
-        url: `${base}/sys/logout`,
+        url: `${baseURL}/sys/logout`,
         data: {
           access_token: access_token,
         },
       }).catch(error => {
         console.log(error)
       })
-      window.location.href = `${hostUrl}/login?returnUrl=${next_url}`
     }
+    window.location.href = `${hostURL}/login?returnUrl=${next_url}`
   }
 
   const avatorMenu = (
@@ -81,7 +83,7 @@ const MuxinHeader = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles['pic-con']}>
-        <a target="self" href={`${hostUrl}/home`}>
+        <a target="self" href={`${hostURL}/home`}>
           <img className={styles['pic-img']} src={myHeader} />
         </a>
         <Dropdown overlay={menu}>

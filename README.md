@@ -17,7 +17,12 @@ import CusHeader from 'muxin-header'
 import 'muxin-header/lib/main.min.css'
 
 const Myheader = () => {
-  return <CusHeader avator="" />
+  return (
+    <CusHeader
+      hostURL="http://localhost:3000/dashboardadmin"
+      baseURL="http://192.168.2.135:1036"
+    />
+  )
 }
 
 export default Myheader
@@ -25,6 +30,7 @@ export default Myheader
 
 ## API
 
-| name   | description | type   | default |
-| ------ | ----------- | ------ | ------- |
-| avator | 头像地址    | string |         |
+| name    | description  | type   | default                                        |
+| ------- | ------------ | ------ | ---------------------------------------------- |
+| hostURL | 退出跳转地址 | string | https://api.uwooz.com/sso-manage               |
+| baseURL | 接口请求地址 | string | https://console.cloud.uwooz.com/dashboardadmin |
